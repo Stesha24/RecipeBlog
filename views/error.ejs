@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= error.status %></title>
+</head>
+<body>
+  <p class="err_status">
+    <%= error.status %>
+  </p>
+  <p class="err_msg">
+    <%= message %>
+  </p>
+  <p class="err_stack">
+    <%= error.stack %>
+  </p>
+</body>
+</html>

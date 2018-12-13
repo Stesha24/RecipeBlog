@@ -30,4 +30,4 @@ schema.set('toJSON', {
   virtuals: true
 })
 
-module.exports = mongoose.model('UncheckedRecipe', schema);
+module.exports = mongoose.model('CheckedRecipe', schema);

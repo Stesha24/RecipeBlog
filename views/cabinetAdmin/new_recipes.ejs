@@ -18,6 +18,7 @@
       <ul>
         <% for(var i = 0; i < recipes.length; i++) { %>
             <li class="newRecipes__recipe" id="newRecipes__recipe_<%= i %>">
+            <p class="hide id"><%= recipes[i].id %></p>
             <p class="photo">
               <img src="<%= recipes[i].photoPath%>" alt="recipe_photo">
             </p>
@@ -33,9 +34,12 @@
             <p class="fullRecipe toggling">
               <%= recipes[i].fullRecipe %>
             </p>
+            <p class="hide author">
+              <%= recipes[i].author %>
+            </p>
 
-            <button class="newRecipes__button accept__button toggling__buttons" id="acceptButton_<%= i %>">Accept</button>
-            <button class="newRecipes__button reject__button toggling__buttons" id="rejectButton_<%= i %>">Reject</button>
+            <button class="accept__button toggling__buttons" id="acceptButton_<%= i %>">Accept</button>
+            <button class="reject__button toggling__buttons" id="rejectButton_<%= i %>">Reject</button>
           </li>
         <% } %>
       </ul>

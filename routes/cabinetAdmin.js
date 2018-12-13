@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     });
   }
 });
-
+// GET for new recipes page
 router.get('/new_recipes', (req, res) => {
   const id = req.session.userId;
   const login = req.session.userLogin;
@@ -53,4 +53,38 @@ router.get('/new_recipes', (req, res) => {
   }
 });
 
+//POST for Accepting recipe
+router.post('/accept', (req, res) => {
+  const recipe_id = req.body.id.trim();
+  const title = req.body.title.trim();
+  const ingredients = req.body.ingredients.trim();
+  const fullRecipe = req.body.fullRecipe.trim();
+  const photoPath = req.body.photoPath.replace("http://localhost:3000", "");
+  const author = req.body.author.trim();
+  if(!title || !ingredients || !fullRecipe || !photoPath || !recipe_id || !author) {
+    res.json({
+      ok: false,
+      error: 'All recipes fields must be filled!'
+    });
+  } else {
+    models.CheckedRecipe.create({
+      title,
+      ingredients,
+      fullRecipe,
+      author,
+      photoPath
+    }).then(checkedRecipe => {
+      //console.log(typeof (mongoose.Types.ObjectId(recipe_id)));
+      //models.UncheckedRecipe.findByIdAndDelete(recipe_id);
+      res.json({
+        ok:true
+      });
+    }).catch(err => {
+      console.log(err);
+      res.json({
+        ok:false
+      });
+    });
+  }
+});
 module.exports = router;

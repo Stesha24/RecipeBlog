@@ -53,8 +53,8 @@ router.post('/add_recipe', (req, res) => {
       fullRecipe,
       author,
       photoPath
-    }).then(unceckedRecipe => {
-      console.log(unceckedRecipe);
+    }).then(uncheckedRecipe => {
+      console.log(uncheckedRecipe);
       res.json({
         ok:true
       });
@@ -63,7 +63,7 @@ router.post('/add_recipe', (req, res) => {
       res.json({
         ok:false
       });
-    })
+    });
   }
 });
 

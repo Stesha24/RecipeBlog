@@ -27,7 +27,8 @@ gulp.task ('scripts', () => {
     .src([
       'dev/js/auth.js',
       'dev/js/cabinetMenu.js',
-      'dev/js/cabinet.js'
+      'dev/js/cabinet.js',
+      'dev/js/cabinetAdmin.js'
     ])
     .pipe(concat('scripts.js'))
     .pipe(uglify())

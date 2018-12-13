@@ -2,23 +2,25 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 
-// GET for cabinet NEED FIX!!!!!
-router.get('/', (req, res) => {
+router.get('/add_recipe', (req, res) => {
   const id = req.session.userId;
   const login = req.session.userLogin;
+  const role = req.session.userRole;
 
   if (id != null && login != null) {
-    res.render('cabinet/', {
+    res.render('cabinet/add_recipe', {
       user: {
         id,
-        login
+        login,
+        role
       }
     });
   } else {
     res.render('cabinet/auth', {
       user: {
         id,
-        login
+        login,
+        role
       }
     });
   }

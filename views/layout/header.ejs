@@ -20,9 +20,13 @@
           <span> or </span>
           <span class="auth__link auth__links_reg">Sign up</span>
         </p>
+        <% } else if (user.role == 'admin') { %>
+        <% include cabinetMenuAdmin.ejs %>
+        <i class="fas fa-angle-down"></i>
         <% } else { %>
-        <% include cabinetMenu.ejs %><i class="fas fa-angle-down"></i>
-        <% } %>
+        <% include cabinetMenu.ejs %>
+        <i class="fas fa-angle-down"></i>
+        <%} %>
         <img src="/images/cook.png" alt="cook" class="auth__img">
       </div>
     </div>

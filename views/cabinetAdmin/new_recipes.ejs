@@ -1,0 +1,45 @@
+<% include ../layout/header.ejs %>
+<nav>
+  <div class="container">
+    <div class="nav__cabinet col-12">
+      <ul class="nav__cabinet_menu">
+        <li class="nav__cabinet_item col-3  active"><a href="/cabinetAdmin/new_recipes">New Recipes</a></li>
+        <li class="nav__cabinet_item col-3"><a href="/cabinetAdmin">Nothing</a></li>
+        <li class="nav__cabinet_item col-3"><a href="/cabinetAdmin">Nothing</a></li>
+        <li class="nav__cabinet_item col-3"><a href="/cabinetAdmin">Nothing</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="newRecipes">
+      <ul>
+        <% for(var i = 0; i < recipes.length; i++) { %>
+            <li class="newRecipes__recipe" id="newRecipes__recipe_<%= i %>">
+            <p class="photo">
+              <img src="<%= recipes[i].photoPath%>" alt="recipe_photo">
+            </p>
+            <p class="title">
+              <%= recipes[i].title %>
+            </p>
+            <button class="newRecipes__button" id="newRecipes__button_<%= i %>">Show full recipe</button>
+            <p class="label toggling">Ingredients:</p>
+            <p class="ingredients toggling">
+              <%= recipes[i].ingredients %>
+            </p>
+            <p class="label toggling">Recipe:</p>
+            <p class="fullRecipe toggling">
+              <%= recipes[i].fullRecipe %>
+            </p>
+
+            <button class="newRecipes__button accept__button toggling__buttons" id="acceptButton_<%= i %>">Accept</button>
+            <button class="newRecipes__button reject__button toggling__buttons" id="rejectButton_<%= i %>">Reject</button>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</main>
+<% include ../layout/footer.ejs %>

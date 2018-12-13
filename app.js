@@ -42,6 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(staticAsset(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('javascripts', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
@@ -49,10 +50,13 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.get('/', function (req, res) {
   const id = req.session.userId;
   const login = req.session.userLogin;
+  const role = req.session.userRole;
+  console.log(id + " " + login + " " + role);
   res.render('index', {
     user: {
       id,
-      login
+      login,
+      role
     }
   });
 });
@@ -60,10 +64,13 @@ app.get('/', function (req, res) {
 app.get('/cabinet', function(req, res) {
   const id = req.session.userId;
   const login = req.session.userLogin;
+  const role = req.session.userRole;
+
   res.render('cabinet', {
     user: {
       id,
-      login
+      login,
+      role
     }
   });
 });

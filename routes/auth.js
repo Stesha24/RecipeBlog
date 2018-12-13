@@ -54,7 +54,7 @@ router.post('/registration', (req, res) => {
       }).then(user => {
         req.session.userId = user.id;
         req.session.userLogin = user.login;
-        req.session.role = user.role;
+        req.session.userRole = user.role;
         res.json({
           ok: true
         });
@@ -104,7 +104,7 @@ router.post('/authorization', (req, res) => {
           } else {
             req.session.userId = user.id;
             req.session.userLogin = user.login;
-            req.session.role = user.role;
+            req.session.userRole = user.role;
             res.json({
               ok: true
             });

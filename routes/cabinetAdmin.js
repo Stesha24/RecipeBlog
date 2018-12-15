@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models');
+const mongoose = require('mongoose');
 
 // GET for admin cabinet
 router.get('/', (req, res) => {
@@ -73,9 +74,15 @@ router.post('/accept', (req, res) => {
       fullRecipe,
       author,
       photoPath
-    }).then(checkedRecipe => {
-      //console.log(typeof (mongoose.Types.ObjectId(recipe_id)));
-      //models.UncheckedRecipe.findByIdAndDelete(recipe_id);
+    }).then(() => {
+      models.UncheckedRecipe.findByIdAndDelete(recipe_id, function(err, doc) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log(doc);
+        }
+      });
+    }).then(() => {
       res.json({
         ok:true
       });

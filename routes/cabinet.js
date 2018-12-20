@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 
+router.get('/', (req, res) => {
+  const id = req.session.userId;
+  const login = req.session.userLogin;
+  const role = req.session.userRole;
+
+  res.render('cabinet', {
+    user: {
+      id,
+      login,
+      role
+    }
+  });
+});
+
 router.get('/add_recipe', (req, res) => {
   const id = req.session.userId;
   const login = req.session.userLogin;

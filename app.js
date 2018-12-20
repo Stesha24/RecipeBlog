@@ -47,38 +47,26 @@ app.use('javascripts', express.static(path.join(__dirname, 'node_modules', 'jque
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 // routers
-app.get('/', function (req, res) {
-  const id = req.session.userId;
-  const login = req.session.userLogin;
-  const role = req.session.userRole;
-  console.log(id + " " + login + " " + role);
-  res.render('index', {
-    user: {
-      id,
-      login,
-      role
-    }
-  });
-});
 
-app.get('/cabinet', function(req, res) {
-  const id = req.session.userId;
-  const login = req.session.userLogin;
-  const role = req.session.userRole;
-
-  res.render('cabinet', {
-    user: {
-      id,
-      login,
-      role
-    }
-  });
-});
+// app.get('/cabinet', function(req, res) {
+//   const id = req.session.userId;
+//   const login = req.session.userLogin;
+//   const role = req.session.userRole;
+//
+//   res.render('cabinet', {
+//     user: {
+//       id,
+//       login,
+//       role
+//     }
+//   });
+// });
 
 app.use('/api/auth', routes.auth);
 app.use('/cabinet', routes.cabinet);
 app.use('/upload', routes.upload);
 app.use('/cabinetAdmin', routes.cabinetAdmin);
+app.use('/', routes.allRecipes);
 // page 404
 app.use((req, res, next) => {
   const err = new Error('Not found');
